@@ -1,0 +1,42 @@
+version: '3'
+services:  
+  main_container:
+    # https://jupyter-docker-stacks.readthedocs.io/en/latest/using/common.html#docker-options
+    image: jupyter/all-spark-notebook
+    hostname: main
+    restart: always
+    ports:
+      - "8888:8888"
+      - "8882:8882"
+      - "4040:4040"
+      - "2222:22"
+    user: root
+    working_dir: /root
+    environment:
+      - JUPYTER_ENABLE_LAB=yes
+    volumes:
+      - ./py:/home/jovyan/work/py
+      - ./main_data:/home/jovyan/work/main_data
+
+  mysql:
+  #https://blackbird.si/converting-your-innodb-mysql-server-to-tokudb-how-we-did-it/
+  #set global default_storage_engine=TokuDB;
+  #service mysql restart
+    image: sempre813/tokudb-mariadb
+    hostname: mysql
+    restart: always
+    ports:
+      - "3306:3306"
+    environment: 
+      MYSQL_ROOT_PASSWORD: ${PASSWORD:-password}
+    volumes:
+      - ./mysql_data:/data/mysql_db
+    command:
+      - --character-set-server=utf8mb4
+      - --collation-server=utf8mb4_unicode_ci
+
+  adminer:
+    image: adminer
+    restart: always
+    ports:
+      - 8080:8080
