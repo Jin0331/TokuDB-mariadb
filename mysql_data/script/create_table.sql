@@ -1,4 +1,7 @@
 -- wmb_no Table Create SQL
+
+USE test;
+
 CREATE TABLE wmb_no
 (
     `ID`      INT            NOT NULL    AUTO_INCREMENT, 
@@ -295,7 +298,7 @@ ALTER TABLE antibody
 
 
 -- wmb_no Table Create SQL
-CREATE TABLE cellline
+CREATE TABLE celline
 (
     `WMB_NO`                            VARCHAR(45)    NOT NULL, 
     `ID`                                INT            NOT NULL    AUTO_INCREMENT, 

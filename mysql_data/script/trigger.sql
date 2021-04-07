@@ -5,7 +5,7 @@ CREATE TRIGGER pdx_wmb_update BEFORE INSERT ON pdx
 FOR EACH ROW 
 BEGIN
 	SET @table = "PDX";
-	SET New.wmb_no = CONCAT("WM-", @table, "-", NEW.sample, "-", LAST_INSERT_ID()) ; 
+	SET New.WMB_NO = CONCAT("WM-", @table, "-", NEW.SAMPLE_ID, "-", LAST_INSERT_ID()) ; 
 END;
 |
 DELIMITER ;
@@ -15,7 +15,7 @@ DELIMITER |
 CREATE TRIGGER pdx_wmb_import AFTER INSERT ON pdx 
 FOR EACH ROW 
 BEGIN
-	INSERT INTO sample (wmb_no, sample) VALUES (NEW.wmb_no, NEW.sample) ;
+	INSERT INTO sample (WMB_NO, SAMPLE_ID) VALUES (NEW.WMB_NO, NEW.SAMPLE_ID) ;
 END;
 |
 DELIMITER ;
@@ -27,7 +27,7 @@ CREATE TRIGGER ff_wmb_update BEFORE INSERT ON ff
 FOR EACH ROW 
 BEGIN
 	SET @table = "FF";
-	SET New.wmb_no = CONCAT("WM-", @table, "-", NEW.sample, "-", LAST_INSERT_ID()) ; 
+	SET New.WMB_NO = CONCAT("WM-", @table, "-", NEW.SAMPLE_ID, "-", LAST_INSERT_ID()) ; 
 END;
 |
 DELIMITER ;
@@ -37,7 +37,7 @@ DELIMITER |
 CREATE TRIGGER ff_wmb_import AFTER INSERT ON ff 
 FOR EACH ROW 
 BEGIN
-	INSERT INTO sample (wmb_no, sample) VALUES (NEW.wmb_no, NEW.sample) ;
+	INSERT INTO sample (WMB_NO, SAMPLE_ID) VALUES (NEW.WMB_NO, NEW.SAMPLE_ID) ;
 END;
 |
 DELIMITER ;
@@ -49,7 +49,7 @@ CREATE TRIGGER ffpe_wmb_update BEFORE INSERT ON ffpe
 FOR EACH ROW 
 BEGIN
 	SET @table = "FFPE";
-	SET New.wmb_no = CONCAT("WM-", @table, "-", NEW.sample, "-", LAST_INSERT_ID()) ; 
+	SET New.WMB_NO = CONCAT("WM-", @table, "-", NEW.SAMPLE_ID, "-", LAST_INSERT_ID()) ; 
 END;
 |
 DELIMITER ;
@@ -59,7 +59,7 @@ DELIMITER |
 CREATE TRIGGER ffpe_wmb_import AFTER INSERT ON ffpe 
 FOR EACH ROW 
 BEGIN
-	INSERT INTO sample (wmb_no, sample) VALUES (NEW.wmb_no, NEW.sample) ;
+	INSERT INTO sample (WMB_NO, SAMPLE_ID) VALUES (NEW.WMB_NO, NEW.SAMPLE_ID) ;
 END;
 |
 DELIMITER ;
@@ -71,7 +71,7 @@ CREATE TRIGGER blood_wmb_update BEFORE INSERT ON blood
 FOR EACH ROW 
 BEGIN
 	SET @table = "BLOOD";
-	SET New.wmb_no = CONCAT("WM-", @table, "-", NEW.sample, "-", LAST_INSERT_ID()) ; 
+	SET New.WMB_NO = CONCAT("WM-", @table, "-", NEW.SAMPLE_ID, "-", LAST_INSERT_ID()) ; 
 END;
 |
 DELIMITER ;
@@ -81,7 +81,7 @@ DELIMITER |
 CREATE TRIGGER blood_wmb_import AFTER INSERT ON blood 
 FOR EACH ROW 
 BEGIN
-	INSERT INTO sample (wmb_no, sample) VALUES (NEW.wmb_no, NEW.sample) ;
+	INSERT INTO sample (WMB_NO, SAMPLE_ID) VALUES (NEW.WMB_NO, NEW.SAMPLE_ID) ;
 END;
 |
 DELIMITER ;
@@ -92,7 +92,7 @@ DELIMITER |
 CREATE TRIGGER sample_wmb_import AFTER INSERT ON sample
 FOR EACH ROW 
 BEGIN
-	INSERT INTO wmb_no (wmb_no) VALUES (NEW.wmb_no) ;
+	INSERT INTO wmb_no (WMB_NO) VALUES (NEW.WMB_NO) ;
 END;
 |
 DELIMITER ;
@@ -105,7 +105,7 @@ CREATE TRIGGER pdx_result_wmb_update BEFORE INSERT ON pdx_result
 FOR EACH ROW 
 BEGIN
 	SET @table = "PDXRESULT";
-	SET New.wmb_no = CONCAT("WM-", @table, "-", NEW.sample, "-", LAST_INSERT_ID()) ; 
+	SET New.WMB_NO = CONCAT("WM-", @table, "-", NEW.SAMPLE_ID, "-", LAST_INSERT_ID()) ; 
 END;
 |
 DELIMITER ;
@@ -115,7 +115,7 @@ DELIMITER |
 CREATE TRIGGER pdx_result_wmb_import AFTER INSERT ON pdx_result
 FOR EACH ROW 
 BEGIN
-	INSERT INTO wmb_no (wmb_no) VALUES (NEW.wmb_no) ;
+	INSERT INTO wmb_no (WMB_NO) VALUES (NEW.WMB_NO) ;
 END;
 |
 DELIMITER ;
@@ -127,7 +127,7 @@ CREATE TRIGGER ff_result_wmb_update BEFORE INSERT ON ff_result
 FOR EACH ROW 
 BEGIN
 	SET @table = "FFRESULT";
-	SET New.wmb_no = CONCAT("WM-", @table, "-", NEW.sample, "-", LAST_INSERT_ID()) ; 
+	SET New.WMB_NO = CONCAT("WM-", @table, "-", NEW.SAMPLE_ID, "-", LAST_INSERT_ID()) ; 
 END;
 |
 DELIMITER ;
@@ -137,7 +137,7 @@ DELIMITER |
 CREATE TRIGGER ff_result_wmb_import AFTER INSERT ON ff_result
 FOR EACH ROW 
 BEGIN
-	INSERT INTO wmb_no (wmb_no) VALUES (NEW.wmb_no) ;
+	INSERT INTO wmb_no (WMB_NO) VALUES (NEW.WMB_NO) ;
 END;
 |
 DELIMITER ;
@@ -149,7 +149,7 @@ CREATE TRIGGER ffpe_result_wmb_update BEFORE INSERT ON ffpe_result
 FOR EACH ROW 
 BEGIN
 	SET @table = "FFPERESULT";
-	SET New.wmb_no = CONCAT("WM-", @table, "-", NEW.sample, "-", LAST_INSERT_ID()) ; 
+	SET New.WMB_NO = CONCAT("WM-", @table, "-", NEW.SAMPLE_ID, "-", LAST_INSERT_ID()) ; 
 END;
 |
 DELIMITER ;
@@ -159,7 +159,7 @@ DELIMITER |
 CREATE TRIGGER ffpe_result_wmb_import AFTER INSERT ON ffpe_result
 FOR EACH ROW 
 BEGIN
-	INSERT INTO wmb_no (wmb_no) VALUES (NEW.wmb_no) ;
+	INSERT INTO wmb_no (WMB_NO) VALUES (NEW.WMB_NO) ;
 END;
 |
 DELIMITER ;
@@ -171,7 +171,7 @@ CREATE TRIGGER blood_result_wmb_update BEFORE INSERT ON blood_result
 FOR EACH ROW 
 BEGIN
 	SET @table = "BLOODRESULT";
-	SET New.wmb_no = CONCAT("WM-", @table, "-", NEW.sample, "-", LAST_INSERT_ID()) ; 
+	SET New.WMB_NO = CONCAT("WM-", @table, "-", NEW.SAMPLE_ID, "-", LAST_INSERT_ID()) ; 
 END;
 |
 DELIMITER ;
@@ -181,7 +181,7 @@ DELIMITER |
 CREATE TRIGGER blood_result_wmb_import AFTER INSERT ON blood_result
 FOR EACH ROW 
 BEGIN
-	INSERT INTO wmb_no (wmb_no) VALUES (NEW.wmb_no) ;
+	INSERT INTO wmb_no (WMB_NO) VALUES (NEW.WMB_NO) ;
 END;
 |
 DELIMITER ;
@@ -194,7 +194,7 @@ CREATE TRIGGER drug_wmb_update BEFORE INSERT ON drug
 FOR EACH ROW 
 BEGIN
 	SET @table = "DRUG";
-	SET New.wmb_no = CONCAT("WM-", @table, "-", LAST_INSERT_ID()) ; 
+	SET New.WMB_NO = CONCAT("WM-", @table, "-", LAST_INSERT_ID()) ; 
 END;
 |
 DELIMITER ;
@@ -204,7 +204,7 @@ DELIMITER |
 CREATE TRIGGER drug_wmb_import AFTER INSERT ON drug
 FOR EACH ROW 
 BEGIN
-	INSERT INTO wmb_no (wmb_no) VALUES (NEW.wmb_no) ;
+	INSERT INTO wmb_no (WMB_NO) VALUES (NEW.WMB_NO) ;
 END;
 |
 DELIMITER ;
@@ -215,7 +215,7 @@ CREATE TRIGGER antibody_wmb_update BEFORE INSERT ON antibody
 FOR EACH ROW 
 BEGIN
 	SET @table = "ANTIBODY";
-	SET New.wmb_no = CONCAT("WM-", @table, "-", LAST_INSERT_ID()) ; 
+	SET New.WMB_NO = CONCAT("WM-", @table, "-", LAST_INSERT_ID()) ; 
 END;
 |
 DELIMITER ;
@@ -225,7 +225,7 @@ DELIMITER |
 CREATE TRIGGER antibody_wmb_import AFTER INSERT ON antibody
 FOR EACH ROW 
 BEGIN
-	INSERT INTO wmb_no (wmb_no) VALUES (NEW.wmb_no) ;
+	INSERT INTO wmb_no (WMB_NO) VALUES (NEW.WMB_NO) ;
 END;
 |
 DELIMITER ;
@@ -236,7 +236,7 @@ CREATE TRIGGER celline_wmb_update BEFORE INSERT ON celline
 FOR EACH ROW 
 BEGIN
 	SET @table = "CELLINE";
-	SET New.wmb_no = CONCAT("WM-", @table, "-", LAST_INSERT_ID()) ; 
+	SET New.WMB_NO = CONCAT("WM-", @table, "-", LAST_INSERT_ID()) ; 
 END;
 |
 DELIMITER ;
@@ -246,7 +246,7 @@ DELIMITER |
 CREATE TRIGGER celline_wmb_import AFTER INSERT ON celline
 FOR EACH ROW 
 BEGIN
-	INSERT INTO wmb_no (wmb_no) VALUES (NEW.wmb_no) ;
+	INSERT INTO wmb_no (WMB_NO) VALUES (NEW.WMB_NO) ;
 END;
 |
 DELIMITER ;
@@ -257,7 +257,7 @@ CREATE TRIGGER protein_wmb_update BEFORE INSERT ON protein
 FOR EACH ROW 
 BEGIN
 	SET @table = "PROTEIN";
-	SET New.wmb_no = CONCAT("WM-", @table, "-", LAST_INSERT_ID()) ; 
+	SET New.WMB_NO = CONCAT("WM-", @table, "-", LAST_INSERT_ID()) ; 
 END;
 |
 DELIMITER ;
@@ -267,7 +267,7 @@ DELIMITER |
 CREATE TRIGGER protein_wmb_import AFTER INSERT ON protein
 FOR EACH ROW 
 BEGIN
-	INSERT INTO wmb_no (wmb_no) VALUES (NEW.wmb_no) ;
+	INSERT INTO wmb_no (WMB_NO) VALUES (NEW.WMB_NO) ;
 END;
 |
 DELIMITER ;
@@ -278,7 +278,7 @@ CREATE TRIGGER plasmid_wmb_update BEFORE INSERT ON plasmid
 FOR EACH ROW 
 BEGIN
 	SET @table = "PLASMID";
-	SET New.wmb_no = CONCAT("WM-", @table, "-", LAST_INSERT_ID()) ; 
+	SET New.WMB_NO = CONCAT("WM-", @table, "-", LAST_INSERT_ID()) ; 
 END;
 |
 DELIMITER ;
@@ -288,7 +288,7 @@ DELIMITER |
 CREATE TRIGGER plasmid_wmb_import AFTER INSERT ON plasmid
 FOR EACH ROW 
 BEGIN
-	INSERT INTO wmb_no (wmb_no) VALUES (NEW.wmb_no) ;
+	INSERT INTO wmb_no (WMB_NO) VALUES (NEW.WMB_NO) ;
 END;
 |
 DELIMITER ;
@@ -299,7 +299,7 @@ CREATE TRIGGER ecoli_wmb_update BEFORE INSERT ON ecoli
 FOR EACH ROW 
 BEGIN
 	SET @table = "ECOLI";
-	SET New.wmb_no = CONCAT("WM-", @table, "-", LAST_INSERT_ID()) ; 
+	SET New.WMB_NO = CONCAT("WM-", @table, "-", LAST_INSERT_ID()) ; 
 END;
 |
 DELIMITER ;
@@ -309,7 +309,7 @@ DELIMITER |
 CREATE TRIGGER ecoli_wmb_import AFTER INSERT ON ecoli
 FOR EACH ROW 
 BEGIN
-	INSERT INTO wmb_no (wmb_no) VALUES (NEW.wmb_no) ;
+	INSERT INTO wmb_no (WMB_NO) VALUES (NEW.WMB_NO) ;
 END;
 |
 DELIMITER ;
@@ -320,7 +320,7 @@ CREATE TRIGGER sirna_wmb_update BEFORE INSERT ON sirna
 FOR EACH ROW 
 BEGIN
 	SET @table = "SIRNA";
-	SET New.wmb_no = CONCAT("WM-", @table, "-", LAST_INSERT_ID()) ; 
+	SET New.WMB_NO = CONCAT("WM-", @table, "-", LAST_INSERT_ID()) ; 
 END;
 |
 DELIMITER ;
@@ -330,7 +330,7 @@ DELIMITER |
 CREATE TRIGGER sirna_wmb_import AFTER INSERT ON sirna
 FOR EACH ROW 
 BEGIN
-	INSERT INTO wmb_no (wmb_no) VALUES (NEW.wmb_no) ;
+	INSERT INTO wmb_no (WMB_NO) VALUES (NEW.WMB_NO) ;
 END;
 |
 DELIMITER ;
@@ -341,7 +341,7 @@ CREATE TRIGGER shrna_wmb_update BEFORE INSERT ON shrna
 FOR EACH ROW 
 BEGIN
 	SET @table = "SHRNA";
-	SET New.wmb_no = CONCAT("WM-", @table, "-", LAST_INSERT_ID()) ; 
+	SET New.WMB_NO = CONCAT("WM-", @table, "-", LAST_INSERT_ID()) ; 
 END;
 |
 DELIMITER ;
@@ -351,7 +351,7 @@ DELIMITER |
 CREATE TRIGGER shrna_wmb_import AFTER INSERT ON shrna
 FOR EACH ROW 
 BEGIN
-	INSERT INTO wmb_no (wmb_no) VALUES (NEW.wmb_no) ;
+	INSERT INTO wmb_no (WMB_NO) VALUES (NEW.WMB_NO) ;
 END;
 |
 DELIMITER ;
