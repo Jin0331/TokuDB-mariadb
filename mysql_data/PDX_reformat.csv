@@ -1,0 +1,3 @@
+﻿WMB_No,Sample_ID,FF_ID,검체번호,국내,해외,Ethnicity,Tissue,Disease,입고형태,인수자,입고일자,보관위치,Tumor_Grade,Tumor_Stage,기본정보_성별,기본정보_나이,기본정보_신장,기본정보_체중,Smoking정보_현재상태,Smoking정보_횟수,Smoking정보_기간,Alcohol정보_현재상태,Alcohol정보_횟수,Alcohol정보_기간,Prior_Treatment,Drug,Passage,Media,이식시점,이식투여기간,HistologicalDescription,mouse종류,구입처,Chemoresistance_status,Mutation_status,RON_Genotype,IGSF1_Genotype,P34_Genotype
+,PDX-4010,,C87,ASAN,,,Colon,adenocarcinoma,적출 후 24시간 이내,이민기,,,,,,,,,,,,,,,,Cetuximab R;Oxaliplatin R,P5,HBSS,18.11.02,14~18일,,BALB/c-nude,CRJ,,,,,
+,PDX-4010,,C116,ASAN,,,Colon,,적출 후 24시간 이내,이민기,,,,,,,,,,,,,,,,,P5,HBSS,19.01.08,16일,,BALB/c-nude,CRJ,,,,,
